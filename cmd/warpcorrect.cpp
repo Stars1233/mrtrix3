@@ -43,7 +43,7 @@ void usage ()
   + Option ("marker", "single value or a comma separated list of values that define out of bounds voxels in the input warp image."
     " Default: (0,0,0).")
     + Argument ("coordinates").type_sequence_float()
-  + Option ("tolerance", "numerical precision used for L2 matrix norm comparison. Default: " + str(PRECISION) + ".")
+  + Option ("tolerance", "numerical precision used for comparison to marker. Default: " + str(PRECISION) + ".")
     + Argument ("value").type_float(PRECISION);
 }
 
@@ -61,7 +61,7 @@ class BoundsCheck { MEMALIGN(BoundsCheck)
       void operator() (ImageTypeIn& in, ImageTypeOut& out)
       {
         val = Eigen::Matrix<value_type, 3, 1>(in.row(3));
-        if ((vec - val).isMuchSmallerThan(precision) || (vec.hasNaN() && val.hasNaN())) {
+        if ((vec - val).isZero(precision) || (vec.hasNaN() && val.hasNaN())) {
           count++;
           for (auto l = Loop (3) (out); l; ++l)
             out.value() = NaN;
