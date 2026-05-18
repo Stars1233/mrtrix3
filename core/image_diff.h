@@ -122,7 +122,7 @@ namespace MR
         while (it2 != in2.keyval().end() && reserved.find (it2->first) != reserved.end())
           ++it2;
 
-        if (it1 == in1.keyval().end() || it2 == in2.keyval().end())
+        if (it1 == in1.keyval().end() && it2 == in2.keyval().end())
           break;
 
         if (it1 == in1.keyval().end()) {
