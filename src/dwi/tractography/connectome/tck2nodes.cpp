@@ -31,6 +31,8 @@ namespace Connectome {
 
 node_t Tck2nodes_end_voxels::select_node (const Tractography::Streamline<>& tck, Image<node_t>& v, const bool end) const
 {
+  if (tck.empty())
+    return 0;
   const Eigen::Vector3d p ((end ? tck.back() : tck.front()).cast<default_type>());
   const Eigen::Vector3d v_float (transform->scanner2voxel * p);
   for (size_t axis = 0; axis != 3; ++axis)
@@ -69,6 +71,8 @@ void Tck2nodes_radial::initialise_search ()
 
 node_t Tck2nodes_radial::select_node (const Tractography::Streamline<>& tck, Image<node_t>& v, const bool end) const
 {
+  if (tck.empty())
+    return 0;
   default_type min_dist = max_dist;
   node_t node = 0;
 
@@ -105,6 +109,8 @@ node_t Tck2nodes_radial::select_node (const Tractography::Streamline<>& tck, Ima
 
 node_t Tck2nodes_revsearch::select_node (const Tractography::Streamline<>& tck, Image<node_t>& v, const bool end) const
 {
+  if (tck.size() < 2)
+    return 0;
   const int midpoint_index = end ? (tck.size() / 2) : ((tck.size() + 1) / 2);
   const int start_index    = end ? (tck.size() - 1) : 0;
   const int step           = end ? -1 : 1;
@@ -134,6 +140,8 @@ node_t Tck2nodes_revsearch::select_node (const Tractography::Streamline<>& tck, 
 
 node_t Tck2nodes_forwardsearch::select_node (const Tractography::Streamline<>& tck, Image<node_t>& v, const bool end) const
 {
+  if (tck.size() < 2)
+    return 0;
   // Start by defining the endpoint and the tangent at the endpoint
   const int index = end ? (tck.size() - 1) : 0;
   const int step  = end ? -1 : 1;
