@@ -12,7 +12,7 @@ Command-line usage
 If you need to become familiar with using the command-line,
 there are plenty of tutorials online to get you started.
 Included in that set is
-`this tuorial <http://command-line-tutorial.readthedocs.io/>`_
+`this tutorial <http://command-line-tutorial.readthedocs.io/>`_
 created by MRtrix3 project lead J-Donald Tournier.
 There are however a few notable features specific to *MRtrix3*, which are outlined below.
 
