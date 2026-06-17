@@ -861,7 +861,7 @@ int main() { return 0; }
 ''', cpp_flags + eigen_cflags, ld_flags)
   report (cxx_standard + '\n')
 except CompileError as eigen_std_probe:
-  if 'error: #error Eigen requires at least c++14 support.' in str (eigen_std_probe):
+  if 'Eigen requires at least c++14 support' in str (eigen_std_probe):
     report ('c++14\n')
     cpp_flags = [ '-std=c++14' if flag == '-std=c++11' else flag for flag in cpp_flags ]
     cxx_standard = 'c++14'
