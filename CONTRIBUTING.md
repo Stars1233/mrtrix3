@@ -236,8 +236,8 @@ to be provided in subsequent sections of this document.
       it for any formatting issues. Instructions for doing so can be found
       in "[`docs/README.md`](https://github.com/MRtrix3/mrtrix3/blob/master/docs/README.md)".
 
-1. For code contributions, if possible, a unit test or reproducibility
-   test should be added. This can be used to:
+1. For code contributions, if possible, unit tests and/or reproducibility
+   tests should be added. This can be used to:
 
    -  Demonstrate appropriate behaviour of novel functionality;
 
@@ -287,6 +287,10 @@ this may indeed include yourself in the future). Simply including the text
 "`#xxxx`" (replacing "`xxxx`" with the number of the relevant Issue /
 Pull Request) will result in GitHub automatically creating bi-directional
 hyperinks between the relevant pages.
+
+Note that AI agents do not have the requisite permissions to create a Pull
+Request to MRtrix via the GitHub API. Human creation of a Pull Request
+via the GitHub website will be required.
 
 -----
 
